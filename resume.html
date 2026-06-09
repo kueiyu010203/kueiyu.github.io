@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>陳奎宇 (Chen, Kui-Yu) - 專業簡歷 / Resume</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    }
+
+    /* 隱藏非當前語言的元素 */
+    .lang-en { display: none; }
+    html[lang="en"] .lang-zh { display: none; }
+    html[lang="en"] .lang-en { display: block; }
+    html[lang="en"] .lang-en-inline { display: inline; }
+    html[lang="zh"] .lang-en-inline { display: none; }
+
+    /* Print Optimization to force single A4 page */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-shadow-none {
+        box-shadow: none !important;
+      }
+      .page-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+      /* Adjust sizes to fit exactly 1 page */
+      .sidebar-bg {
+        background-color: #f8fafc !important; /* light slate */
+        border-right: 1px solid #e2e8f0 !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0.8cm;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen py-8 px-4 flex flex-col items-center justify-start antialiased">
+
+  <!-- Action Bar (Not visible when printing) -->
+  <div class="no-print w-full max-w-5xl mb-6 flex flex-col lg:flex-row justify-between items-center gap-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-slate-200/50">
+
+    <div class="flex flex-wrap items-center gap-4">
+      <!-- Language Switcher -->
+      <div class="flex items-center bg-slate-100 rounded-lg p-1 text-xs font-semibold text-slate-600 gap-1 border border-slate-200">
+        <button onclick="switchLanguage('zh')" id="btn-lang-zh" class="px-3 py-1.5 rounded-md bg-white text-slate-800 shadow-sm transition-all">中文</button>
+        <button onclick="switchLanguage('en')" id="btn-lang-en" class="px-3 py-1.5 rounded-md hover:text-slate-800 transition-all">English</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="flex items-center bg-slate-100 rounded-lg p-1 text-xs font-medium text-slate-600 gap-1">
+        <button onclick="changeTheme('blue')" id="btn-blue" class="px-3 py-1.5 rounded-md bg-white text-brand-700 shadow-sm transition-all">科技藍</button>
+        <button onclick="changeTheme('dark')" id="btn-dark" class="px-3 py-1.5 rounded-md hover:text-slate-800 transition-all">極致黑</button>
+        <button onclick="changeTheme('emerald')" id="btn-emerald" class="px-3 py-1.5 rounded-md hover:text-slate-800 transition-all">森林綠</button>
+      </div>
+
+      <!-- Print Button -->
+      <button onclick="window.print()" class="flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-medium px-4 py-2 rounded-xl text-sm shadow-md shadow-brand-200 transition-all cursor-pointer" id="btn-print-main">
+        <i data-lucide="printer" class="w-4 h-4"></i>
+        <span class="lang-zh">匯出 PDF / 列印</span>
+        <span class="lang-en">Export PDF / Print</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Resume Container (Target A4 proportion in screen mode) -->
+  <main class="page-container w-full max-w-5xl bg-white shadow-xl rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 print-shadow-none transition-all duration-300">
+
+    <!-- Left Column (Sidebar): Width 4/12 -->
+    <section id="sidebar" class="sidebar-bg md:col-span-4 bg-slate-50 border-r border-slate-100 p-6 sm:p-7 flex flex-col justify-between transition-colors duration-300">
+      <div>
+        <!-- Profile Header -->
+        <div class="text-center md:text-left pb-5 border-b border-slate-200">
+          <!-- Monogram / Avatar Placeholder -->
+          <div class="flex justify-center md:justify-start">
+            <img src="img/10511121-1.jpg" alt="陳奎宇" class="w-20 h-20 rounded-2xl object-cover shadow-lg shadow-brand-200 mb-4 transition-all duration-300" id="avatar">
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-wide">
+            <span class="lang-zh">陳奎宇</span>
+            <span class="lang-en">Kui-Yu Chen</span>
+          </h2>
+          <p class="text-sm font-medium text-brand-600 mt-1" id="subtitle-role">Edge AI & CV Software Engineer</p>
+          <p class="text-xs text-slate-500 mt-0.5">
+            <span class="lang-zh">邊緣運算 / 電腦視覺研發工程師</span>
+            <span class="lang-en">Edge AI & Computer Vision Engineer</span>
+          </p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="py-5 border-b border-slate-200 space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">
+            <span class="lang-zh">聯絡資訊</span>
+            <span class="lang-en">Contact</span>
+          </h3>
+
+          <div class="flex items-center gap-3 text-slate-600 text-sm">
+            <div class="text-brand-600" id="icon-phone"><i data-lucide="phone" class="w-4 h-4"></i></div>
+            <a href="tel:0939354286" class="hover:text-brand-600 transition-colors">0939-354-286</a>
+          </div>
+
+          <div class="flex items-center gap-3 text-slate-600 text-sm">
+            <div class="text-brand-600" id="icon-email"><i data-lucide="mail" class="w-4 h-4"></i></div>
+            <a href="mailto:chen883588job@gmail.com" class="hover:text-brand-600 transition-colors break-all">chen883588job@gmail.com</a>
+          </div>
+
+          <div class="flex items-start gap-3 text-slate-600 text-sm">
+            <div class="text-brand-600 mt-0.5" id="icon-clock"><i data-lucide="clock" class="w-4 h-4"></i></div>
+            <div>
+              <p class="lang-zh">聯絡時段：9:00 - 21:00</p>
+              <p class="lang-en">Available: 9:00 - 21:00</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 text-slate-600 text-sm">
+            <div class="text-brand-600" id="icon-map"><i data-lucide="map-pin" class="w-4 h-4"></i></div>
+            <p>
+              <span class="lang-zh">工作地點：台灣，新竹市</span>
+              <span class="lang-en">Location: Hsinchu, Taiwan</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Programming Languages -->
+        <div class="py-5 border-b border-slate-200">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+            <span class="lang-zh">程式語言</span>
+            <span class="lang-en">Languages</span>
+          </h3>
+          <div class="space-y-2">
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                <span>C / C++ (Android NDK)</span>
+                <span>
+                  <span class="lang-zh">精通</span>
+                  <span class="lang-en">Proficient</span>
+                </span>
+              </div>
+              <div class="w-full bg-slate-200 h-1.5 rounded-full">
+                <div class="bg-brand-600 h-1.5 rounded-full transition-all duration-500" style="width: 90%" id="bar-cpp"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                <span>Python (PyTorch, OpenCV)</span>
+                <span>
+                  <span class="lang-zh">精通</span>
+                  <span class="lang-en">Proficient</span>
+                </span>
+              </div>
+              <div class="w-full bg-slate-200 h-1.5 rounded-full">
+                <div class="bg-brand-600 h-1.5 rounded-full transition-all duration-500" style="width: 85%" id="bar-py"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                <span>Java (Android / OCP)</span>
+                <span>
+                  <span class="lang-zh">熟悉</span>
+                  <span class="lang-en">Familiar</span>
+                </span>
+              </div>
+              <div class="w-full bg-slate-200 h-1.5 rounded-full">
+                <div class="bg-brand-600 h-1.5 rounded-full transition-all duration-500" style="width: 75%" id="bar-java"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Tree -->
+        <div class="py-5 border-b border-slate-200">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+            <span class="lang-zh">專業技能</span>
+            <span class="lang-en">Skills</span>
+          </h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-medium">Android App Dev</span>
+            <span class="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-medium">Edge AI Deployment</span>
+            <span class="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-medium">Machine Learning</span>
+            <span class="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-medium">Image Processing</span>
+            <span class="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-medium">Quantization / Pruning</span>
+            <span class="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-medium">Multi-threading Async</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Tools -->
+        <div class="py-5 border-b border-slate-200">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+            <span class="lang-zh">常用工具與套件</span>
+            <span class="lang-en">Tools & Frameworks</span>
+          </h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 bg-brand-50 text-brand-700 rounded-md text-xs font-semibold" id="badge-pytorch">PyTorch</span>
+            <span class="px-2 py-0.5 bg-brand-50 text-brand-700 rounded-md text-xs font-semibold" id="badge-opencv">OpenCV</span>
+            <span class="px-2 py-0.5 bg-brand-50 text-brand-700 rounded-md text-xs font-semibold" id="badge-numpy">NumPy</span>
+            <span class="px-2 py-0.5 bg-brand-50 text-brand-700 rounded-md text-xs font-semibold" id="badge-pandas">Pandas</span>
+            <span class="px-2 py-0.5 bg-brand-50 text-brand-700 rounded-md text-xs font-semibold" id="badge-studio">Android Studio</span>
+            <span class="px-2 py-0.5 bg-brand-50 text-brand-700 rounded-md text-xs font-semibold" id="badge-docker">Docker</span>
+            <span class="px-2 py-0.5 bg-brand-50 text-brand-700 rounded-md text-xs font-semibold" id="badge-git">Git</span>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="py-5 border-b border-slate-200 md:border-none">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+            <span class="lang-zh">專業認證</span>
+            <span class="lang-en">Certifications</span>
+          </h3>
+          <div class="flex items-center gap-2 bg-white border border-slate-200 p-2 rounded-xl">
+            <div class="text-amber-500"><i data-lucide="award" class="w-5 h-5"></i></div>
+            <div class="text-[11px] leading-tight">
+              <p class="font-bold text-slate-800">Oracle Certified Professional</p>
+              <p class="text-slate-500">Java SE 11 Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language Skills -->
+      <div class="pt-2">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+          <span class="lang-zh">語言能力</span>
+          <span class="lang-en">Languages</span>
+        </h3>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="bg-white border border-slate-200 p-2 rounded-lg text-center">
+            <span class="font-bold text-slate-700 block">
+              <span class="lang-zh">中文 (Mandarin)</span>
+              <span class="lang-en">Chinese</span>
+            </span>
+            <span class="text-brand-600 font-semibold" id="lang-zh-badge">
+              <span class="lang-zh">母語精通</span>
+              <span class="lang-en">Native</span>
+            </span>
+          </div>
+          <div class="bg-white border border-slate-200 p-2 rounded-lg text-center">
+            <span class="font-bold text-slate-700 block">
+              <span class="lang-zh">英文 (English)</span>
+              <span class="lang-en">English</span>
+            </span>
+            <span class="text-slate-500" id="lang-en-badge">
+              <span class="lang-zh">中等</span>
+              <span class="lang-en">Intermediate</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column (Main): Width 8/12 -->
+    <section class="md:col-span-8 p-6 sm:p-7 flex flex-col justify-between">
+
+      <!-- Summary section -->
+      <div class="mb-5">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2.5 flex items-center gap-2" id="sect-summary">
+          <i data-lucide="user" class="w-4 h-4"></i>
+          <span class="lang-zh">專業簡介</span>
+          <span class="lang-en">Professional Summary</span>
+        </h3>
+
+        <!-- Chinese Summary -->
+        <ul class="lang-zh space-y-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-1">•</span>
+            <span>擁有 <strong>3 年以上 Computer Vision 與 Edge AI 開發經驗</strong>，擅長將先進的深度學習技術落地應用。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-2">•</span>
+            <span>具備<strong>從資料分析、模型訓練、模型優化到 Android 邊緣裝置部署</strong>的完整全棧開發能力。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-3">•</span>
+            <span>主導 <strong>DMS（Driver Monitoring System，駕駛監控系統）</strong> 深度學習演算法之開發、優化與正式量產導入。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-4">•</span>
+            <span>專精於 <strong>AI 模型落地效能調校</strong>，能有效整合 C++ NDK 核心與 Android 系統層級。</span>
+          </li>
+        </ul>
+
+        <!-- English Summary -->
+        <ul class="lang-en space-y-2 text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-1-en">•</span>
+            <span>Over <strong>3 years of experience in Computer Vision and Edge AI development</strong>, specializing in deep learning deployment.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-2-en">•</span>
+            <span>Full-cycle development capability spanning <strong>data analysis, model training, model optimization, and Android edge deployment</strong>.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-3-en">•</span>
+            <span>Led deep learning algorithm development, optimization, and production pipeline integration for <strong>DMS (Driver Monitoring System)</strong>.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-1" id="bullet-4-en">•</span>
+            <span>Expertise in <strong>on-device AI optimization</strong>, successfully integrating high-performance C++ NDK logic with Android OS layer.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Experience section -->
+      <div class="mb-5">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-3.5 flex items-center gap-2" id="sect-exp">
+          <i data-lucide="briefcase" class="w-4 h-4"></i>
+          <span class="lang-zh">工作經歷</span>
+          <span class="lang-en">Experience</span>
+        </h3>
+
+        <div class="relative border-l-2 border-slate-100 pl-4 ml-2">
+          <!-- Item 1 -->
+          <div class="mb-1 relative">
+            <div class="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-brand-600 border-4 border-white transition-colors duration-300" id="timeline-dot"></div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 mb-2">
+              <div>
+                <h4 class="font-bold text-slate-800 text-base">
+                  <span class="lang-zh">鴻海精密工業股份有限公司</span>
+                  <span class="lang-en">Hon Hai Precision Industry Co., Ltd</span>
+                </h4>
+                <p class="text-xs text-slate-500">
+                  <span class="lang-zh">消費性電子產品製造業 (新竹市)</span>
+                  <span class="lang-en">Consumer Electronics (Hsinchu City)</span>
+                </p>
+              </div>
+              <div class="text-left sm:text-right">
+                <span class="px-2.5 py-0.5 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-full block sm:inline-block">
+                  <span class="lang-zh">2023/5 - 仍在職</span>
+                  <span class="lang-en">May 2023 - Present</span>
+                </span>
+                <p class="text-xs font-bold text-brand-600 mt-1" id="text-title">
+                  <span class="lang-zh">通訊軟體研發工程師 / 軟體工程師</span>
+                  <span class="lang-en">Software Engineer / Edge AI Specialist</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Chinese Job Duties -->
+            <ul class="lang-zh space-y-2 text-slate-600 text-xs leading-relaxed">
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400 mt-0.5">1.</span>
+                <span><strong>邊緣裝置模型部署</strong>：於 Android OS 嵌入式系統上建置多階段非同步（async）推論流程，設計 Ping-Pong Buffer 解決方案實現高效能的多執行緒資料交互。</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400 mt-0.5">2.</span>
+                <span><strong>DMS 深度網路模型</strong>：基於卷積神經網路（CNN）架構開發 Multi-Task 多任務學習模型，提升系統同時監測多種狀態的精準度與效率。</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400 mt-0.5">3.</span>
+                <span><strong>模型輕量化與剪枝</strong>：靈活運用模型量化（Quantization）與模型剪枝（Pruning）技術，最大化降低運算複雜度，大幅提升邊緣裝置上的執行效能（FPS）。</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400 mt-0.5">4.</span>
+                <span><strong>指標分析與驗證</strong>：主導建立 DMS 模型評估體系，制定完整的模型功能與效能驗證流程，確保實際場景下的量產穩定度。</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400 mt-0.5">5.</span>
+                <span><strong>精準度微調 (Fine-tuning)</strong>：針對邊緣極端環境進行專屬的資料分析與 Fine-tuning，持續優化並提高模型在真實場景中的辨識準確率。</span>
+              </li>
+            </ul>
+
+            <!-- English Job Duties -->
+            <ul class="lang-en space-y-1.5 text-slate-600 text-[11px] leading-normal">
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400">1.</span>
+                <span><strong>Edge Deployment</strong>: Built a multi-stage asynchronous inference pipeline on Android OS embedded systems, utilizing Ping-Pong Buffers to achieve efficient, thread-safe data interaction.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400">2.</span>
+                <span><strong>DMS Deep Network Models</strong>: Designed and developed a CNN-based Multi-Task model architecture to simultaneously detect various driver monitoring behaviors.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400">3.</span>
+                <span><strong>Model Compression</strong>: Applied Quantization and Channel Pruning techniques to minimize computational footprint, securing major frame-rate (FPS) boosts on restricted edge chips.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400">4.</span>
+                <span><strong>Indicator Analysis</strong>: Engineered and established a dedicated evaluation framework for DMS, standardizing testing metrics to validate production-level stability.</span>
+              </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-slate-400">5.</span>
+                <span><strong>Accuracy Fine-tuning</strong>: Executed targeted data collection and model fine-tuning for extreme edge cases, substantially mitigating false positives in the field.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project section -->
+      <div class="mb-5">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2.5 flex items-center gap-2" id="sect-project">
+          <i data-lucide="folder-git-2" class="w-4 h-4"></i>
+          <span class="lang-zh">亮點專案</span>
+          <span class="lang-en">Key Project</span>
+        </h3>
+
+        <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+          <div class="flex justify-between items-center mb-1.5">
+            <h4 class="font-bold text-slate-800 text-sm">
+              <span class="lang-zh">Driver Monitoring System (DMS) 駕駛監控系統</span>
+              <span class="lang-en">Driver Monitoring System (DMS) Production</span>
+            </h4>
+            <span class="text-[9px] bg-brand-100 text-brand-700 font-bold px-2 py-0.5 rounded-full whitespace-nowrap" id="tag-proj-date">2023/05 - 2026/05</span>
+          </div>
+
+          <!-- Chinese Project Info -->
+          <p class="lang-zh text-xs text-slate-600 leading-relaxed">
+            負責全套 DMS 深度學習演算法與 Android 邊緣裝置部署。採用 NDK 技術於 Android 嵌入式平台上建置<strong>多階段非同步推論架構</strong>，結合 <strong>Ping-Pong Buffer 機制</strong>，實現高效率、低延遲的多執行緒資料流。
+          </p>
+          <p class="lang-zh text-xs text-slate-600 leading-relaxed mt-1">
+            在模型端，設計支援多項行車安全監測任務的 <strong>CNN Multi-Task 架構</strong>。透過 <strong>Quantization 與 Pruning</strong> 等輕量化技術，讓高精度模型能在記憶體與算力受限的邊緣晶片中順暢運行。
+          </p>
+
+          <!-- English Project Info -->
+          <p class="lang-en text-[11px] text-slate-600 leading-relaxed">
+            Led the DMS model optimization and on-device deployment. Architected an efficient **multi-stage asynchronous inference** flow using C++ NDK on Android systems, incorporating a custom **Ping-Pong Buffer** mechanism to handle multi-threaded data flow under tight latency constraints.
+          </p>
+          <p class="lang-en text-[11px] text-slate-600 leading-relaxed mt-1">
+            Designed a **CNN Multi-Task architecture** addressing multiple behavioral alerts. Systematically shrunk model footprints using **Quantization and structural Pruning** to enable real-time inference on edge microprocessors.
+          </p>
+        </div>
+      </div>
+
+      <!-- Education section -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2.5 flex items-center gap-2" id="sect-edu">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+          <span class="lang-zh">學歷背景</span>
+          <span class="lang-en">Education</span>
+        </h3>
+
+        <div class="space-y-2.5 text-xs">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-bold text-slate-800 text-sm">
+                <span class="lang-zh">國立中正大學</span>
+                <span class="lang-en">National Chung Cheng University</span>
+              </h4>
+              <p class="text-slate-500">
+                <span class="lang-zh">資訊工程學系 碩士畢業</span>
+                <span class="lang-en">M.S. in Computer Science and Information Engineering</span>
+              </p>
+            </div>
+            <span class="font-medium text-slate-500 whitespace-nowrap">2020/09 - 2022/08</span>
+          </div>
+
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-bold text-slate-800 text-sm">
+                <span class="lang-zh">國立臺東大學</span>
+                <span class="lang-en">National Taitung University</span>
+              </h4>
+              <p class="text-slate-500">
+                <span class="lang-zh">資訊工程學系 大學畢業</span>
+                <span class="lang-en">B.S. in Computer Science and Information Engineering</span>
+              </p>
+            </div>
+            <span class="font-medium text-slate-500 whitespace-nowrap">2016/09 - 2020/06</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="no-print mt-6 text-center text-xs text-slate-400">
+    <p>
+      <span class="lang-zh">© 2026 陳奎宇. 專為網頁預覽及 A4 單頁列印排版優化.</span>
+      <span class="lang-en">© 2026 Kui-Yu Chen. Optimized for web preview and single-page A4 printing.</span>
+    </p>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Language Toggle State
+    let currentLang = 'zh';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.setAttribute('lang', lang);
+
+      // Buttons visual state
+      const btnZh = document.getElementById('btn-lang-zh');
+      const btnEn = document.getElementById('btn-lang-en');
+
+      if (lang === 'zh') {
+        btnZh.classList.add('bg-white', 'text-slate-800', 'shadow-sm');
+        btnEn.classList.remove('bg-white', 'text-slate-800', 'shadow-sm');
+        btnEn.classList.add('hover:text-slate-800');
+      } else {
+        btnEn.classList.add('bg-white', 'text-slate-800', 'shadow-sm');
+        btnZh.classList.remove('bg-white', 'text-slate-800', 'shadow-sm');
+        btnZh.classList.add('hover:text-slate-800');
+      }
+    }
+
+    // Theme Switcher Logic
+    let currentTheme = 'blue';
+    function changeTheme(theme) {
+      currentTheme = theme;
+      const body = document.body;
+      const avatar = document.getElementById('avatar');
+      const role = document.getElementById('subtitle-role');
+
+      // Get all controls/buttons
+      const btnBlue = document.getElementById('btn-blue');
+      const btnDark = document.getElementById('btn-dark');
+      const btnEmerald = document.getElementById('btn-emerald');
+
+      // Theme Colors Mapping
+      const themes = {
+        blue: {
+          brand: '#2563eb', // blue-600
+          brandLight: '#e0effe', // blue-100
+          brandBg: '#f0f7ff', // blue-50
+          btnActive: btnBlue,
+          bullets: ['bullet-1', 'bullet-2', 'bullet-3', 'bullet-4', 'bullet-1-en', 'bullet-2-en', 'bullet-3-en', 'bullet-4-en'],
+          sects: ['sect-summary', 'sect-exp', 'sect-project', 'sect-edu'],
+          badges: ['badge-pytorch', 'badge-opencv', 'badge-numpy', 'badge-pandas', 'badge-studio', 'badge-docker', 'badge-git'],
+          icons: ['icon-phone', 'icon-email', 'icon-clock', 'icon-map'],
+          bars: ['bar-cpp', 'bar-py', 'bar-java']
+        },
+        dark: {
+          brand: '#1e293b', // slate-800
+          brandLight: '#f1f5f9', // slate-100
+          brandBg: '#f8fafc', // slate-50
+          btnActive: btnDark,
+          bullets: ['bullet-1', 'bullet-2', 'bullet-3', 'bullet-4', 'bullet-1-en', 'bullet-2-en', 'bullet-3-en', 'bullet-4-en'],
+          sects: ['sect-summary', 'sect-exp', 'sect-project', 'sect-edu'],
+          badges: ['badge-pytorch', 'badge-opencv', 'badge-numpy', 'badge-pandas', 'badge-studio', 'badge-docker', 'badge-git'],
+          icons: ['icon-phone', 'icon-email', 'icon-clock', 'icon-map'],
+          bars: ['bar-cpp', 'bar-py', 'bar-java']
+        },
+        emerald: {
+          brand: '#059669', // emerald-600
+          brandLight: '#d1fae5', // emerald-100
+          brandBg: '#ecfdf5', // emerald-50
+          btnActive: btnEmerald,
+          bullets: ['bullet-1', 'bullet-2', 'bullet-3', 'bullet-4', 'bullet-1-en', 'bullet-2-en', 'bullet-3-en', 'bullet-4-en'],
+          sects: ['sect-summary', 'sect-exp', 'sect-project', 'sect-edu'],
+          badges: ['badge-pytorch', 'badge-opencv', 'badge-numpy', 'badge-pandas', 'badge-studio', 'badge-docker', 'badge-git'],
+          icons: ['icon-phone', 'icon-email', 'icon-clock', 'icon-map'],
+          bars: ['bar-cpp', 'bar-py', 'bar-java']
+        }
+      };
+
+      const selected = themes[theme];
+
+      // Remove active states from buttons
+      [btnBlue, btnDark, btnEmerald].forEach(btn => {
+        btn.classList.remove('bg-white', 'text-brand-700', 'shadow-sm', 'text-slate-800', 'text-emerald-700');
+        btn.classList.add('hover:text-slate-800');
+      });
+
+      // Add active state to selected button
+      selected.btnActive.classList.add('bg-white', 'shadow-sm');
+      selected.btnActive.classList.remove('hover:text-slate-800');
+
+      if (theme === 'blue') selected.btnActive.classList.add('text-brand-700');
+      if (theme === 'dark') selected.btnActive.classList.add('text-slate-800');
+      if (theme === 'emerald') selected.btnActive.classList.add('text-emerald-700');
+
+      // Update avatar color
+      avatar.style.backgroundColor = selected.brand;
+      avatar.style.boxShadow = `0 10px 15px -3px ${selected.brand}30`;
+
+      // Update subtitle role color
+      role.style.color = selected.brand;
+
+      // Update bullet points (safely in case some are hidden/rendered conditionally)
+      selected.bullets.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.color = selected.brand;
+      });
+
+      // Update Section Titles
+      selected.sects.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.color = selected.brand;
+      });
+
+      // Update Badges background and text
+      selected.badges.forEach(id => {
+        const badge = document.getElementById(id);
+        if (badge) {
+          badge.style.backgroundColor = selected.brandBg;
+          badge.style.color = selected.brand;
+        }
+      });
+
+      // Update Sidebar Icons
+      selected.icons.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.color = selected.brand;
+      });
+
+      // Update Progress Bars
+      selected.bars.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.backgroundColor = selected.brand;
+      });
+
+      // Update Timeline Dot
+      const dot = document.getElementById('timeline-dot');
+      if (dot) dot.style.backgroundColor = selected.brand;
+
+      // Update Project Date Tag
+      const projDate = document.getElementById('tag-proj-date');
+      if (projDate) {
+        projDate.style.backgroundColor = selected.brandLight;
+        projDate.style.color = selected.brand;
+      }
+
+      // Update Language Pill/Badges inside content
+      const zhBadge = document.getElementById('lang-zh-badge');
+      if (zhBadge) zhBadge.style.color = selected.brand;
+
+      // Update action button
+      const printBtn = document.getElementById('btn-print-main');
+      const iconBox = document.getElementById('control-icon-box');
+      if (printBtn) {
+        printBtn.style.backgroundColor = selected.brand;
+      }
+      if (iconBox) {
+        iconBox.style.backgroundColor = selected.brandLight;
+        iconBox.style.color = selected.brand;
+      }
+    }
+
+    // Set initial configuration
+    document.documentElement.setAttribute('lang', 'zh');
+  </script>
+</body>
+</html>
